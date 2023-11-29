@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  grader:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["make", "full"]
+    volumes:
+      - .:/app
+    networks:
+      - grader-network
+
+networks:
+  grader-network:
+    driver: bridge
+    internal: true
